@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mohit Bhagchandani | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohit Bhagchandani - Portfolio</title>
 <style>
   body {
     font-family: Arial, sans-serif;
+    margin: 0;
     background-color: #121212;
     color: #f5f5f5;
-    margin: 0;
-    padding: 0;
     line-height: 1.6;
+    scroll-behavior: smooth;
   }
   header {
-    background: #1e1e1e;
-    padding: 1.5rem;
-    text-align: center;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
   }
-  header h1 {
-    margin: 0;
-    font-size: 2rem;
-  }
-  nav {
-    margin-top: 0.5rem;
-  }
-  nav a {
+  header nav a {
     color: #f5f5f5;
-    margin: 0 0.75rem;
+    margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
   }
-  nav a:hover {
-    color: #4dd0e1;
+  header nav a:hover {
+    color: #ff9800;
   }
   section {
     max-width: 900px;
-    margin: auto;
-    padding: 2rem;
+    margin: 100px auto;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
   }
-  h2 {
-    border-bottom: 2px solid #4dd0e1;
-    padding-bottom: 0.25rem;
-    margin-bottom: 1rem;
+  section.show {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .card {
-    background: #1e1e1e;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+  h1, h2 {
+    color: #ff9800;
   }
-  footer {
-    background: #1e1e1e;
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    margin-top: 2rem;
+  .contact a {
+    color: #ff9800;
+    text-decoration: none;
+    margin-right: 15px;
+  }
+  .contact a:hover {
+    text-decoration: underline;
   }
 </style>
 </head>
 <body>
+
 <header>
   <h1>Mohit Bhagchandani</h1>
-  <p>Backend EDA Applications Engineer | Semiconductor Industry | Layout Automation</p>
   <nav>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
@@ -74,48 +72,58 @@
 <section id="about">
   <h2>About Me</h2>
   <p>
-    I am a Backend EDA Applications Engineer at Texas Instruments specializing in Analog Layout Automation and Physical Verification. I work extensively with the Cadence Virtuoso Environment to improve designers' efficiency, reduce design turnaround time, and deploy tools tailored to organizational needs.
+    Hey there 👋 — I’m Mohit, a Backend EDA Applications Engineer at Texas Instruments, 
+    specializing in Analog Layout Automation and Physical Verification.  
+    I’m basically the bridge between design dreams and real-world semiconductor magic.  
+    My day job involves working with tools like Cadence Virtuoso to make life easier for designers — 
+    and my personal mission is to be the go-to person for Layout Automation in EDA.  
+    When I’m not streamlining chip design, I’m probably brainstorming ways to make tech teams more efficient… 
+    or sneaking in a fun office game.  
   </p>
 </section>
 
 <section id="experience">
   <h2>Experience</h2>
-  <div class="card">
-    <h3>Texas Instruments</h3>
-    <p><strong>Backend EDA Applications Engineer</strong> — Dallas, TX</p>
-    <ul>
-      <li>Lead Layout Automation engagements with US-based design teams.</li>
-      <li>Deployed DRV and Array Assistant across multiple teams globally.</li>
-      <li>Collaborated with Cadence to enhance tool performance and meet TI design standards.</li>
-    </ul>
-  </div>
+  <ul>
+    <li>Lead developer and global rollout manager for Design Review (DRV) tool across 30 teams worldwide.</li>
+    <li>Deployed Array Assistant, improving designer efficiency and workflow speed.</li>
+    <li>Primary Layout Automation expert in North America, with increased user engagement and leadership endorsements.</li>
+    <li>Collaborated with EDA vendors like Cadence to tailor tools to TI’s needs.</li>
+  </ul>
 </section>
 
 <section id="projects">
   <h2>Projects</h2>
-  <div class="card">
-    <h3>Design Review Viewer (DRV) Rollout</h3>
-    <p>Replaced a legacy review tool, standardizing review workflows across 30+ teams worldwide.</p>
-  </div>
-  <div class="card">
-    <h3>Array Assistant Deployment</h3>
-    <p>Resolved 23 of 27 reported issues during tool evaluation and deployment, streamlining Cadence collaboration.</p>
-  </div>
-  <div class="card">
-    <h3>XP-DK Deployment</h3>
-    <p>Validated devices, set up project files, and led global and regional rollout for AO teams.</p>
-  </div>
+  <ul>
+    <li><strong>Array Assistant Deployment:</strong> Solved 23 of 27 launch issues, streamlined tool adoption.</li>
+    <li><strong>XP-DK Evaluation:</strong> Set up, validated devices, and led global presentations.</li>
+    <li><strong>Design Intent Rollout:</strong> Completed deployment across multiple design teams.</li>
+  </ul>
 </section>
 
-<section id="contact">
+<section id="contact" class="contact">
   <h2>Contact</h2>
-  <p>Email: <a href="mailto:youremail@example.com" style="color:#4dd0e1;">youremail@example.com</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" style="color:#4dd0e1;">linkedin.com/in/yourprofile</a></p>
-  <p>GitHub: <a href="https://github.com/yourusername" style="color:#4dd0e1;">github.com/yourusername</a></p>
+  <p>
+    📧 <a href="mailto:mbhagchandani7@gmail.com">mbhagchandani7@gmail.com</a><br>
+    💼 <a href="https://www.linkedin.com/in/mohit5292" target="_blank">LinkedIn</a>
+  </p>
 </section>
 
-<footer>
-  <p>© 2025 Mohit Bhagchandani. All Rights Reserved.</p>
-</footer>
+<script>
+  // Fade-in animation on scroll
+  const sections = document.querySelectorAll('section');
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach(sec => {
+      const secTop = sec.getBoundingClientRect().top;
+      if (secTop < triggerBottom) {
+        sec.classList.add('show');
+      }
+    });
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
+</script>
+
 </body>
 </html>
