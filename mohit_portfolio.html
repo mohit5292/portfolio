@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohit Bhagchandani | Portfolio</title>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+  }
+  header {
+    position: relative;
+    height: 60vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+  }
+  header h1 {
+    position: relative;
+    font-size: 2.5rem;
+    z-index: 2;
+    margin: 0 20px;
+  }
+  nav {
+    text-align: center;
+    padding: 15px 0;
+    background: rgba(0,0,0,0.2);
+  }
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  nav a:hover {
+    color: #ffeb3b;
+  }
+  section {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease forwards;
+  }
+  h2 {
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    background: rgba(0,0,0,0.2);
+  }
+  @keyframes fadeUp {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  /* Canvas full size in header */
+  #circuit-bg {
+    position: absolute;
+    top:0; left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <canvas id="circuit-bg"></canvas>
+  <h1>Hi, I'm Mohit, Backend EDA Engineer at Texas Instruments</h1>
+</header>
+
+<nav>
+  <a href="#summary">Summary</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <p>
+    I’m a Backend EDA Engineer at Texas Instruments, passionate about building tools that make designers’ lives easier.
+    When I’m not optimizing workflows, I’m probably tinkering with new tech, making people laugh in meetings, or
+    finding smarter ways to solve complex problems.
+  </p>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <p>
+    I work at Texas Instruments as a Backend EDA Engineer, with expertise in Layout Automation tools, Physical
+    Verification, and Package & Board tools. I lead and manage development and deployment projects on a global scale,
+    driving high-impact initiatives that streamline workflows, enhance productivity, and deliver measurable value to
+    engineering teams worldwide.
+  </p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <ul>
+    <li>Array Assistant Deployment</li>
+    <li>Design Review (DRV) Rollout</li>
+    <li>XP-DK Evaluation & Deployment</li>
+    <li>Layout Automation Leadership Initiatives</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:mbhagchandani7@gmail.com" style="color:#ffeb3b;">mbhagchandani7@gmail.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/mohit5292" target="_blank" style="color:#ffeb3b;">linkedin.com/in/mohit5292</a></p>
+</section>
+
+<footer>
+  &copy; 2025 Mohit Bhagchandani
+</footer>
+
+<script>
+  // Fade-in animation on scroll
+  const sections = document.querySelectorAll('section');
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach(sec => {
+      const secTop = sec.getBoundingClientRect().top;
+      if(secTop < triggerBottom) {
+        sec.style.opacity = 1;
+        sec.style.transform = 'translateY(0)';
+      }
+    });
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
+
+  // Circuit animation
+  const canvas = document.getElementById('circuit-bg');
+  const ctx = canvas.getContext('2d');
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = document.querySelector('header').offsetHeight;
+
+  const nodes = [];
+  const nodeCount = 30;
+  const maxDistance = 150;
+
+  function initNodes() {
+    for(let i=0; i<nodeCount; i++){
+      nodes.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random()-0.5)*0.3,
+        vy: (Math.random()-0.5)*0.3,
+        radius: Math.random()*2+1
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,width,height);
+    for(let i=0;i<nodes.length;i++){
+      let n = nodes[i];
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.radius,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,0.8)';
+      ctx.fill();
+
+      // draw lines
+      for(let j=i+1;j<nodes.length;j++){
+        let m = nodes[j];
+        let dx = n.x - m.x;
+        let dy = n.y - m.y;
+        let dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist<maxDistance){
+          ctx.beginPath();
+          ctx.moveTo(n.x,n.y);
+          ctx.lineTo(m.x,m.y);
+          ctx.strokeStyle = 'rgba(255,255,255,' + (1 - dist/maxDistance)*0.3 + ')';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+
+      // move node
+      n.x += n.vx;
+      n.y += n.vy;
+
+      // bounce
+      if(n.x<0 || n.x>width) n.vx*=-1;
+      if(n.y<0 || n.y>height) n.vy*=-1;
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', ()=>{
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = document.querySelector('header').offsetHeight;
+  });
+
+  initNodes();
+  draw();
+</script>
+</body>
+</html>
