@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohit Bhagchandani | Portfolio</title>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #cce7ff, #a0d8ff);
+  }
+  /* Sticky navigation */
+  nav {
+    position: sticky;
+    top: 0;
+    text-align: right;
+    padding: 15px 30px;
+    background: rgba(255,255,255,0.1);
+    z-index: 10;
+  }
+  nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+  }
+  nav a.active, nav a:hover {
+    background: white;
+    color: #007acc;
+  }
+  header {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #ff6f61; /* accent color */
+    z-index: 2;
+  }
+  header h2 {
+    font-size: 1.8rem;
+    margin: 10px 0 0 0;
+    z-index: 2;
+  }
+  header h2 span.red {
+    color: red;
+  }
+  /* Canvas background */
+  #analog-bg {
+    position: absolute;
+    top:0; left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="active">Home</a>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+</nav>
+
+<header>
+  <canvas id="analog-bg"></canvas>
+  <h1>Hi, I'm Mohit.</h1>
+  <h2>Backend EDA Engineer at <span class="red">T</span>exas <span class="red">I</span>nstruments</h2>
+</header>
+
+<script>
+const canvas = document.getElementById('analog-bg');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight * 0.8;
+
+const nodes = [];
+const nodeCount = 35;
+const maxDist = 120;
+
+// Create nodes
+for(let i=0;i<nodeCount;i++){
+  nodes.push({
+    x: Math.random()*width,
+    y: Math.random()*height,
+    vx: (Math.random()-0.5)*0.3,
+    vy: (Math.random()-0.5)*0.3,
+    radius: Math.random()*2+1.5
+  });
+}
+
+// Draw nodes and connections
+function draw(){
+  ctx.clearRect(0,0,width,height);
+  for(let i=0;i<nodes.length;i++){
+    let n = nodes[i];
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,n.radius,0,Math.PI*2);
+    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+    ctx.fill();
+
+    // lines to nearby nodes
+    for(let j=i+1;j<nodes.length;j++){
+      let m = nodes[j];
+      let dx = n.x - m.x;
+      let dy = n.y - m.y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist<maxDist){
+        ctx.beginPath();
+        ctx.moveTo(n.x,n.y);
+        ctx.lineTo(m.x,m.y);
+        ctx.strokeStyle = 'rgba(255,255,255,'+(0.3*(1-dist/maxDist))+')';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+
+    // move nodes
+    n.x += n.vx;
+    n.y += n.vy;
+
+    if(n.x<0 || n.x>width) n.vx*=-1;
+    if(n.y<0 || n.y>height) n.vy*=-1;
+  }
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('resize', ()=>{
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight*0.8;
+});
+
+draw();
+</script>
+
+</body>
+</html>
