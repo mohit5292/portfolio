@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohit Bhagchandani | About Me</title>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #cce7ff, #a0d8ff);
+    color: #fff;
+  }
+  /* Sticky navigation */
+  nav {
+    position: sticky;
+    top: 0;
+    text-align: right;
+    padding: 15px 30px;
+    background: rgba(255,255,255,0.1);
+    z-index: 10;
+  }
+  nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+  }
+  nav a.active, nav a:hover {
+    background: white;
+    color: #007acc;
+  }
+  main {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+  section {
+    margin-bottom: 60px;
+  }
+  h1, h2 {
+    margin-bottom: 20px;
+  }
+  .card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="work.html">Work</a>
+  <a href="about.html" class="active">About</a>
+</nav>
+
+<main>
+  <h1>About Me</h1>
+
+  <section id="bio">
+    <h2>Personal Bio</h2>
+    <div class="card">
+      <p>Hello! I'm Mohit, a Backend EDA Engineer at Texas Instruments. Outside work, I love exploring new technologies, tinkering with electronics, and solving complex puzzles.</p>
+      <p>I'm also passionate about learning new programming skills and finding creative ways to automate workflows.</p>
+    </div>
+  </section>
+
+  <section id="interests">
+    <h2>Hobbies & Interests</h2>
+    <div class="card">
+      <ul>
+        <li>Analog Layout Automation and EDA tool development</li>
+        <li>Tech experiments and side projects</li>
+        <li>Traveling and exploring new cultures</li>
+        <li>Reading about AI and Machine Learning applications</li>
+        <li>Casual gaming with friends and coworkers</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="fun-facts">
+    <h2>Fun Facts</h2>
+    <div class="card">
+      <ul>
+        <li>I enjoy solving tricky electronics and layout puzzles in my free time.</li>
+        <li>Favorite programming languages: Python & SKILL.</li>
+        <li>Always looking for ways to make work fun and productive for the team!</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
